@@ -40,9 +40,13 @@ def check_winner():
 while game_on:
     print(board)
     if turn % 2 != 0:
-        choice = int(input("Which position you wanna draw X ?: "))
+        try:
+            choice = int(input("Which position you wanna draw X ?: "))
+        except ValueError as error:
+            print(f"\nPosition must be a number between 0 and 10: {error}")
+            continue
         if choice < 1 or choice > 9:
-            print(f"Position must be greater than 0 and less than 10, got: {choice}")
+            print(f"\nPosition must be greater than 0 and less than 10, got: {choice}")
             continue
         elif ps[choice-1] == "X" or ps[choice-1] == "O":
             print("\nSeat is already taken..")
@@ -51,9 +55,13 @@ while game_on:
             ps[choice-1] = "X"
             x_list.append(choice)
     else:
-        choice = int(input("Which position you wanna draw O ?: "))
+        try:
+            choice = int(input("Which position you wanna draw O ?: "))
+        except ValueError as error:
+            print(f"\nPosition must be a number between 0 and 10: {error}")
+            continue
         if choice < 1 or choice > 9:
-            print(f"Position must be greater than 0 and less than 10, got: {choice}")
+            print(f"\nPosition must be greater than 0 and less than 10, got: {choice}")
             continue
         elif ps[choice - 1] == "X" or ps[choice - 1] == "O":
             print("\nSeat is already taken..")
